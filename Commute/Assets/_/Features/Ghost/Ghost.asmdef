@@ -1,7 +1,7 @@
 {
-    "name": "PlayerAssembly",
-    "rootNamespace": "PlayerAssembly",
-    "references": ["GUID:e6635214ea1b42241a0872642be990ac"],
+    "name": "Ghost",
+    "rootNamespace": "Ghost",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

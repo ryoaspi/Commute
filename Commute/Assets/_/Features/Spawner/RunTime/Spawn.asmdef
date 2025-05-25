@@ -1,7 +1,7 @@
 {
     "name": "Spawn",
     "rootNamespace": "Spawn",
-    "references": [],
+    "references": ["GUID:e6635214ea1b42241a0872642be990ac"],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

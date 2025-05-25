@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Ghost;
 using UnityEngine;
 
 namespace Spawn
@@ -35,6 +36,19 @@ namespace Spawn
             
             Instantiate(_playerPrefab[RandomPlayer()], _spawnerPrefab[_start].position, Quaternion.LookRotation(_spawnerPrefab[_start].transform.forward));
             Instantiate(_finishZone, _spawnerPrefab[_finish].position, Quaternion.identity);
+
+            // 💡 Partie ajoutée pour instancier tous les ghosts enregistrés
+            foreach (GhostData ghost in GhostManager.m_instance.m_allGhosts)
+            {
+                // Crée une rotation Y à partir de la première valeur enregistrée
+                Quaternion rotation = Quaternion.Euler(0f, ghost.m_rotations[0],0f);
+                // Instancie une voiture fantôme au bon endroit, avec la bonne rotation
+                GameObject ghostCar = Instantiate(_playerPrefab[RandomPlayer()], ghost.m_positions[0], rotation);
+                // Ajoute le script GhostReplay pour lire les mouvements
+                var replay = ghostCar.AddComponent<GhostReplay>();
+                // Envoie les données à rejouer à ce ghost
+                replay.InitGhost(ghost);
+            }   
             
         }
 
