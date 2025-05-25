@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Ghost
 {
     [System.Serializable]
-    public class GhostData : MonoBehaviour
+    public class GhostData
     {
         #region Publics
         

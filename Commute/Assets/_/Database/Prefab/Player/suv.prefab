@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerSpeed: 3
   _playerRotationSpeed: 180
+  _spawnerManager: {fileID: 8773760707039074845, guid: 7916c4eee2920de4b9a761e57fda2f75, type: 3}
 --- !u!65 &-5006492179215524422
 BoxCollider:
   m_ObjectHideFlags: 0

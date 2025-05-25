@@ -82,33 +82,19 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2b4902fc7ca4aa646945136a80f42fda, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7359356011157894772}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2b4902fc7ca4aa646945136a80f42fda, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 5802882988142807079}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2b4902fc7ca4aa646945136a80f42fda, type: 3}
       insertIndex: -1
       addedObject: {fileID: -5215017493213770529}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2b4902fc7ca4aa646945136a80f42fda, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1326036237860804104}
   m_SourcePrefab: {fileID: 100100000, guid: 2b4902fc7ca4aa646945136a80f42fda, type: 3}
 --- !u!1 &8536846141217172914 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2b4902fc7ca4aa646945136a80f42fda, type: 3}
   m_PrefabInstance: {fileID: 8843259340269080803}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7359356011157894772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8536846141217172914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e665d31d7bfc3fe4eb975b5ee0843daa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerSpeed: 3
-  _playerRotationSpeed: 180
 --- !u!65 &5802882988142807079
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -157,3 +143,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1326036237860804104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8536846141217172914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e665d31d7bfc3fe4eb975b5ee0843daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerSpeed: 3
+  _playerRotationSpeed: 180
+  _spawnerManager: {fileID: 8773760707039074845, guid: 7916c4eee2920de4b9a761e57fda2f75, type: 3}

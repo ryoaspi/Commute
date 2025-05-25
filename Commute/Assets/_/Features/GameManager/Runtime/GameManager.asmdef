@@ -1,8 +1,7 @@
 {
-    "name": "PlayerAssembly",
-    "rootNamespace": "PlayerAssembly",
+    "name": "GameManager",
+    "rootNamespace": "GameManager",
     "references": [
-        "GUID:e6635214ea1b42241a0872642be990ac",
         "GUID:00cbc0564127543499728b5c87e5dcd9"
     ],
     "includePlatforms": [],

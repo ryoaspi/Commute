@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Ghost;
+using Spawn;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,11 +10,6 @@ namespace PlayerAssembly
     public class PlayerMove : MonoBehaviour
     {
         #region Api Unity
-    
-        void Start()
-        {
-        
-        }
     
         void FixedUpdate()
         {
@@ -27,9 +23,19 @@ namespace PlayerAssembly
 
         private void OnCollisionEnter(Collision other)
         {
+            if (_hasFinished) return;
             if (other.gameObject.layer == LayerMask.NameToLayer("Finish"))
             {
+                _hasFinished = true;
                 SaveAsGhost();
+                gameObject.SetActive(false);
+                _spawnerManager.RestartRound();
+                other.gameObject.SetActive(false);
+
+            }
+
+            if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle")|| other.gameObject.layer == LayerMask.NameToLayer("Ghost"))
+            {
                 gameObject.SetActive(false);
             }
         }
@@ -77,9 +83,11 @@ namespace PlayerAssembly
     
         [SerializeField] private float _playerSpeed = 3f;
         [SerializeField] private float _playerRotationSpeed = 180f;
+        [SerializeField] private SpawnerManager _spawnerManager;
         
         private List<Vector3> _positions = new List<Vector3>();
         private List<float> _rotations = new List<float>();
+        private bool _hasFinished = false;
     
         #endregion
     }
