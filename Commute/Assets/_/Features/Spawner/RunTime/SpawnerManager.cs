@@ -11,12 +11,6 @@ namespace Spawn
         {
             RandomSpawn();
         }
-
-        
-        void Update()
-        {
-        
-        }
         
         #endregion
         
@@ -59,6 +53,7 @@ namespace Spawn
             // 💡 Partie ajoutée pour instancier tous les ghosts enregistrés
             foreach (GhostData ghost in GhostManager.m_instance.m_allGhosts)
             {
+                
                 // Crée une rotation Y à partir de la première valeur enregistrée
                 Quaternion rotation = Quaternion.Euler(0f, ghost.m_rotations[0], 0f);
                 // Instancie une voiture fantôme au bon endroit, avec la bonne rotation
@@ -68,7 +63,6 @@ namespace Spawn
                 var replay = ghostCar.AddComponent<GhostReplay>();
                 // Envoie les données à rejouer à ce ghost
                 replay.InitGhost(ghost);
-
             }
         }
 

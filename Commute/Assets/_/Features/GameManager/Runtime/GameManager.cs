@@ -1,6 +1,5 @@
 using Spawn;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GameManager
 {
@@ -19,7 +18,7 @@ namespace GameManager
             }
 
             // Lancer le spawn après un court délai (0.1 seconde)
-            Invoke(nameof(DelayedSpawn), 0.1f);
+            Invoke(nameof(DelayedSpawn), 0.5f);
         }
 
         private void DelayedSpawn()

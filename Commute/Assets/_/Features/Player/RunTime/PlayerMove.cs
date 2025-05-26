@@ -1,16 +1,15 @@
-using System;
 using System.Collections.Generic;
 using Ghost;
 using Spawn;
+using UiManager;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace PlayerAssembly
 {
     public class PlayerMove : MonoBehaviour
     {
         #region Api Unity
-    
+        
         void FixedUpdate()
         {
             transform.position += transform.forward * (_playerSpeed * Time.deltaTime);
@@ -31,22 +30,24 @@ namespace PlayerAssembly
                 gameObject.SetActive(false);
                 _spawnerManager.RestartRound();
                 other.gameObject.SetActive(false);
-
             }
 
-            if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle")|| other.gameObject.layer == LayerMask.NameToLayer("Ghost"))
+            if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
             {
+                Time.timeScale = 0;
                 gameObject.SetActive(false);
             }
         }
 
-        #endregion
-        
-        
-        #region Main Methods
-        
-        
-        
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Time"))
+            {
+                other.gameObject.SetActive(false);
+                _timeText.m_currentTime += 10f;
+            }
+        }
+
         #endregion
     
     
@@ -73,8 +74,6 @@ namespace PlayerAssembly
             
             GhostManager.m_instance.m_allGhosts.Add(ghost);
         }
-        
-        
 
         #endregion
     
@@ -88,6 +87,7 @@ namespace PlayerAssembly
         private List<Vector3> _positions = new List<Vector3>();
         private List<float> _rotations = new List<float>();
         private bool _hasFinished = false;
+        private Timer _timeText;
     
         #endregion
     }
