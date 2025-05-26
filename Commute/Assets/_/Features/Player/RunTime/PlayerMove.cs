@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Ghost;
 using Spawn;
@@ -9,7 +10,12 @@ namespace PlayerAssembly
     public class PlayerMove : MonoBehaviour
     {
         #region Api Unity
-        
+
+        private void Start()
+        {
+            _timeText = FindObjectOfType<Timer>();
+        }
+
         void FixedUpdate()
         {
             transform.position += transform.forward * (_playerSpeed * Time.deltaTime);
@@ -17,7 +23,7 @@ namespace PlayerAssembly
             
             //Enregistrement du mouvement
             _positions.Add(transform.position);
-            _rotations.Add(transform.rotation.y);
+            _rotations.Add(transform.eulerAngles.y);
         }
 
         private void OnCollisionEnter(Collision other)

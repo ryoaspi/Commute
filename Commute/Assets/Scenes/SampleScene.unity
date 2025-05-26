@@ -891,7 +891,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1425942804}
-  - component: {fileID: 1425942806}
   - component: {fileID: 1425942805}
   m_Layer: 0
   m_Name: SpawnerManager
@@ -945,21 +944,6 @@ MonoBehaviour:
   - {fileID: 1157426479179900359, guid: 3c37e21ea2be1a44d8404b6e8f5c5a1e, type: 3}
   - {fileID: 2013391273887778849, guid: 2d2e2d7592bdb574e8d8e73050187fa9, type: 3}
   _finishZone: {fileID: 3820680004262990653, guid: d13e5f6c89019a94c9e30592236ba742, type: 3}
---- !u!114 &1425942806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425942803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60fac67a960767547b06c6b632882e71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spawnerPrefab: []
-  _playerPrefab: []
-  _finishZone: {fileID: 0}
 --- !u!4 &1510551286 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1964055883709551063, guid: e53866ffb154b484f935279379c5e97e, type: 3}

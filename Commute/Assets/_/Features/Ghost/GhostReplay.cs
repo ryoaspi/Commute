@@ -9,7 +9,11 @@ namespace Ghost
         private void FixedUpdate()
         {
             // Si on n’a pas de données ou si l'index dépasse la fin de la liste, on arrête ici
-            if (_data == null || _index >= _data.m_positions.Count) gameObject.SetActive(false);
+            if (_data == null || _index >= _data.m_positions.Count)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
             
             // On positionne le fantôme à la position enregistrée à cet index
             transform.position = _data.m_positions[_index];
