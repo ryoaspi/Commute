@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Ghost;
 using Spawn;
@@ -14,6 +13,9 @@ namespace PlayerAssembly
         private void Start()
         {
             _timeText = FindObjectOfType<Timer>();
+            bool ghost = GetComponent<GhostReplay>();
+            var player = GetComponent<PlayerMove>();
+            if (ghost) player.enabled = false;
         }
 
         void FixedUpdate()
@@ -29,7 +31,7 @@ namespace PlayerAssembly
         private void OnCollisionEnter(Collision other)
         {
             if (_hasFinished) return;
-            if (other.gameObject.layer == LayerMask.NameToLayer("Finish"))
+            if (other.gameObject.layer == LayerMask.NameToLayer("Finish") && gameObject.layer == LayerMask.NameToLayer("Player"))
             {
                 _hasFinished = true;
                 SaveAsGhost();
@@ -38,11 +40,13 @@ namespace PlayerAssembly
                 other.gameObject.SetActive(false);
             }
 
-            if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+            if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle")||other.gameObject.layer == LayerMask.NameToLayer("Ghost"))
             {
                 Time.timeScale = 0;
                 gameObject.SetActive(false);
             }
+            
+            
         }
 
         private void OnTriggerEnter(Collider other)
@@ -92,8 +96,9 @@ namespace PlayerAssembly
         
         private List<Vector3> _positions = new List<Vector3>();
         private List<float> _rotations = new List<float>();
-        private bool _hasFinished = false;
+        private bool _hasFinished;
         private Timer _timeText;
+        
     
         #endregion
     }

@@ -10,6 +10,7 @@ namespace Ghost
         
         public List<Vector3> m_positions = new List<Vector3>();
         public List<float> m_rotations = new List<float>();
+        
         #endregion
     }
 }

@@ -17,7 +17,7 @@ namespace GameManager
                 }
             }
 
-            // Lancer le spawn après un court délai (0.1 seconde)
+            // Lancer le spawn après un court délai (0.5 seconde)
             Invoke(nameof(DelayedSpawn), 0.5f);
         }
 

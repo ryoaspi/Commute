@@ -1,4 +1,3 @@
-using System;
 using Ghost;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -12,6 +11,11 @@ namespace Spawn
         void Start()
         {
             RandomSpawn();
+        }
+
+        private void Update()
+        {
+            _ghostTime += Time.deltaTime;
         }
 
         #endregion
@@ -34,8 +38,11 @@ namespace Spawn
                     Destroy(obj);
                 }
             }
+            
             // relance un nouveau spawn
             RandomSpawn();
+
+            
         }
 
         public void RandomSpawn()
@@ -43,17 +50,22 @@ namespace Spawn
             _start = Random.Range(0, _spawnerPrefab.Length);
             _finish = Random.Range(0, _spawnerPrefab.Length);
 
-            if (_finish == _start)
+            while (_finish == _start)
             {
                 _finish = Random.Range(0, _spawnerPrefab.Length);
             }
 
+            // if (_finish == _start)
+            // {
+            //     _finish = Random.Range(0, _spawnerPrefab.Length);
+            // }
+
             Instantiate(_playerPrefab[RandomPlayer()], _spawnerPrefab[_start].position,
                 Quaternion.LookRotation(_spawnerPrefab[_start].transform.forward));
             Instantiate(_finishZone, _spawnerPrefab[_finish].position, Quaternion.identity);
-            
-            //prépare le timer pour les ghost
-            SpawnGhosts();
+
+            Invoke("SpawnGhosts", _ghostDelay);
+
         }
 
         #endregion
@@ -98,9 +110,9 @@ namespace Spawn
         private int _start;
         private int _finish;
         private int _playerNb;
-        private float _ghostDelay = 0.5f;
-        private float _ghostTime = 0;
-        private bool _spawnGhost= false;
+        private float _ghostDelay = 4.5f;
+        private float _ghostTime;
+        private bool _spawnGhost;
         
         #endregion
     }

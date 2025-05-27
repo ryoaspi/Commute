@@ -11,14 +11,13 @@ namespace UiManager
         
         #endregion
         
+        
         #region Api Unity
         
         void Start()
         {
             m_currentTime = _timerMax;
         }
-
-        
         void Update()
         {
             m_currentTime -= Time.deltaTime;
@@ -37,8 +36,6 @@ namespace UiManager
 
         [SerializeField] private float _timerMax = 60;
         [SerializeField] private TMP_Text _timerText;
-
-        
 
         #endregion
     }
