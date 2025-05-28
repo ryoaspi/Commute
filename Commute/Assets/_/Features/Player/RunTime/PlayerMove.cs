@@ -13,9 +13,10 @@ namespace PlayerAssembly
         private void Start()
         {
             _timeText = FindObjectOfType<Timer>();
+            _spawnerManager = FindObjectOfType<SpawnerManager>();
             bool ghost = GetComponent<GhostReplay>();
             var player = GetComponent<PlayerMove>();
-            if (ghost) player.enabled = false;
+            if (ghost) Destroy(player);
         }
 
         void FixedUpdate()
@@ -59,8 +60,15 @@ namespace PlayerAssembly
         }
 
         #endregion
-    
-    
+
+
+        #region  Main Methods
+
+
+        
+        #endregion
+        
+
         #region Utils
 
         private void RotationCar()
@@ -92,14 +100,16 @@ namespace PlayerAssembly
     
         [SerializeField] private float _playerSpeed = 3f;
         [SerializeField] private float _playerRotationSpeed = 180f;
-        [SerializeField] private SpawnerManager _spawnerManager;
-        
+        [SerializeField] private float _playerBackTime = 5f;
+        private SpawnerManager _spawnerManager;
         private List<Vector3> _positions = new List<Vector3>();
         private List<float> _rotations = new List<float>();
         private bool _hasFinished;
+        private float _backTime;
         private Timer _timeText;
-        
-    
+        private bool _isBackTime;
+
+
         #endregion
     }
 }

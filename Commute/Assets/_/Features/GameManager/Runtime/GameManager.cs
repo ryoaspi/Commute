@@ -23,7 +23,7 @@ namespace GameManager
 
         private void DelayedSpawn()
         {
-            _spawnerManager.RandomSpawn();
+            // _spawnerManager.RandomSpawn();
         }
         
         #region Private And Protected

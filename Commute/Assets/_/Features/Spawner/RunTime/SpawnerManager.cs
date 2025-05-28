@@ -25,21 +25,7 @@ namespace Spawn
 
         public void RestartRound()
         {
-            //Supprime tous les objets sur le layer "player"
-            int playerLayer = LayerMask.NameToLayer("Player");
-            int finishlayer = LayerMask.NameToLayer("Finish");
             
-            GameObject[] allObjects = FindObjectsOfType<GameObject>();
-
-            foreach (GameObject obj in allObjects)
-            {
-                if (obj.layer == finishlayer || obj.layer == playerLayer || obj.layer == LayerMask.NameToLayer("Ghost"))
-                {
-                    Destroy(obj);
-                }
-            }
-            
-            // relance un nouveau spawn
             RandomSpawn();
 
             
@@ -54,15 +40,14 @@ namespace Spawn
             {
                 _finish = Random.Range(0, _spawnerPrefab.Length);
             }
+          
 
-            // if (_finish == _start)
-            // {
-            //     _finish = Random.Range(0, _spawnerPrefab.Length);
-            // }
-
-            Instantiate(_playerPrefab[RandomPlayer()], _spawnerPrefab[_start].position,
-                Quaternion.LookRotation(_spawnerPrefab[_start].transform.forward));
-            Instantiate(_finishZone, _spawnerPrefab[_finish].position, Quaternion.identity);
+            var player = Instantiate(_playerPrefab[RandomPlayer()]);
+            player.transform.position =  _spawnerPrefab[_start].position;
+            player.transform.rotation =  Quaternion.LookRotation(_spawnerPrefab[_start].transform.forward);
+            
+            var finish = Instantiate(_finishZone);
+            finish.transform.position = _spawnerPrefab[_finish].position;
 
             Invoke("SpawnGhosts", _ghostDelay);
 
@@ -110,7 +95,7 @@ namespace Spawn
         private int _start;
         private int _finish;
         private int _playerNb;
-        private float _ghostDelay = 4.5f;
+        private float _ghostDelay = 0.5f;
         private float _ghostTime;
         private bool _spawnGhost;
         
